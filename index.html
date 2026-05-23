@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiMayor Chihuahua | Plataforma de Autonomía Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uach-blue: #003366;
+            --chih-orange: #f39c12;
+            --bg-light: #f4f7fa;
+            --white: #ffffff;
+            --success: #27ae60;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: #1a1a1a;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Navegación Lateral */
+        .sidebar {
+            width: 300px;
+            background: var(--uach-blue);
+            color: white;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+        }
+
+        .sidebar h1 { font-size: 1.8rem; margin-bottom: 50px; border-bottom: 4px solid var(--chih-orange); padding-bottom: 10px; }
+
+        .nav-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.75);
+            text-align: left;
+            padding: 18px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .nav-btn.active { border-left: 6px solid var(--chih-orange); background: rgba(255,255,255,0.2); }
+
+        /* Contenedor Principal */
+        .main {
+            margin-left: 300px;
+            flex-grow: 1;
+            padding: 50px;
+        }
+
+        .section { display: none; animation: fadeIn 0.4s ease-out; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Tarjetas de Tutoriales */
+        .card { background: var(--white); padding: 35px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; background: #000; margin: 25px 0; border: 4px solid #eee; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .btn-oficial {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        .badge { display: inline-block; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px; }
+        .badge-seguro { background: #e8f5e9; color: #2e7d32; }
+
+        footer { margin-top: 80px; text-align: center; color: #aaa; border-top: 1px solid #eee; padding-top: 20px; }
+
+        @media (max-width: 900px) {
+            .sidebar { width: 80px; padding: 20px 10px; }
+            .sidebar h1, .nav-btn span { display: none; }
+            .main { margin-left: 80px; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h1>DigiMayor</h1>
+        <button class="nav-btn active" onclick="showSection('inicio', this)">🏠 <span>Inicio</span></button>
+        <button class="nav-btn" onclick="showSection('luz', this)">💡 <span>Pago de Luz</span></button>
+        <button class="nav-btn" onclick="showSection('agua', this)">💧 <span>Pago de Agua</span></button>
+        <button class="nav-btn" onclick="showSection('predial', this)">🏠 <span>Pago Predial</span></button>
+        <button class="nav-btn" onclick="showSection('proyecto', this)">📊 <span>Sobre DigiMayor</span></button>
+    </div>
+
+    <div class="main">
+
+        <section id="inicio" class="section active">
+            <div class="card" style="background: var(--uach-blue); color: white;">
+                <h2>¡Hola, Omar!</h2>
+                <p>Bienvenido a la plataforma educativa del proyecto. Aquí los adultos mayores de Chihuahua aprenden a dominar sus trámites digitales.</p>
+            </div>
+            <div class="grid-info">
+                <div class="card">
+                    <h3>🌵 Enfoque Chihuahua</h3>
+                    <p>Contenido bilingüe (Español/Rarámuri) para conectar a todo nuestro estado.</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Cero Fraudes</h3>
+                    <p>Enseñamos a identificar estafas antes de realizar cualquier movimiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="luz" class="section">
+            <div class="card">
+                <span class="badge badge-seguro">✓ TUTORIAL CFE VERIFICADO</span>
+                <h2>¿Cómo pagar la luz en la App CFE Contigo?</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/kZC13IeXUbk" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>Pasos principales:</h3>
+                <ul>
+                    <li>Descarga la App <strong>CFE Contigo</strong> y regístrate con tu correo o cuenta de Google.</li>
+                    <li>Ten tu recibo a la mano para ingresar tu número de servicio.</li>
+                    <li>Selecciona "Pagar", ingresa los datos de tu tarjeta y ¡listo!</li>
+                </ul>
+                <a href="https://app.cfe.mx/Aplicaciones/CCFE/ReciboEnLinea/SolicitudPagarRecibo.aspx" target="_blank" class="btn-oficial">Ir al sitio oficial de CFE</a>
+            </div>
+        </section>
+
+        <section id="agua" class="section">
+            <div class="card">
+                <span class="badge badge-seguro">✓ TUTORIAL JMAS VERIFICADO</span>
+                <h2>¿Cómo pagar el agua en la App JMAS?</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/IZpks0rLrVs" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>Beneficios:</h3>
+                <ul>
+                    <li>Consulta tu saldo e historial de pagos al instante.</li>
+                    <li>Utiliza medidas avanzadas de protección para tus transacciones.</li>
+                    <li>Disponible para todo el estado de Chihuahua.</li>
+                </ul>
+                <a href="https://www.jmaschihuahua.gob.mx/pago-en-linea/" target="_blank" class="btn-oficial">Pagar Agua (JMAS)</a>
+            </div>
+        </section>
+
+        <section id="predial" class="section">
+            <div class="card">
+                <span class="badge badge-seguro">✓ TUTORIAL PREDIAL VERIFICADO</span>
+                <h2>¿Cómo pagar el Predial en línea?</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/jZKDcODXNlM" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>Pasos para el portal de la SAF:</h3>
+                <ol>
+                    <li>Entra al portal oficial y selecciona "Predial".</li>
+                    <li>Ingresa tu <strong>Cuenta Predial</strong>.</li>
+                    <li>Selecciona el periodo a liquidar y verifica tu resumen de pago.</li>
+                    <li>Genera tu línea de captura y paga vía internet.</li>
+                </ol>
+                <a href="https://spf.chihuahua.gob.mx/Ingresos/Predial" target="_blank" class="btn-oficial">Pagar Predial Chihuahua</a>
+            </div>
+        </section>
+
+        <section id="proyecto" class="section">
+            <h2>Sobre DigiMayor Chihuahua</h2>
+            <div class="card">
+                <h3>Misión del Proyecto</h3>
+                <p>Restituir la autonomía digital y la dignidad de las personas mayores de 60 años en Chihuahua. Buscamos que el acceso a derechos (salud, pensiones, trámites) sea universal y sencillo.</p>
+                <hr>
+                <h3>Indicadores de Impacto (UACH)</h3>
+                <ul>
+                    <li><strong>Autonomía:</strong> 85% de egresados realizan trámites solos.</li>
+                    <li><strong>Inclusión:</strong> Facilitadores bilingües para la comunidad Rarámuri.</li>
+                    <li><strong>Seguridad:</strong> Reducción del riesgo de fraudes digitales.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left: 8px solid var(--chih-orange);">
+                <h3>Modelo de Sostenibilidad</h3>
+                <p>Operamos mediante un esquema solidario donde los patrocinios y cuotas voluntarias permiten becar al 100% a personas de la Sierra Tarahumara.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p><strong>DigiMayor Chihuahua 2026</strong> | Proyecto Social Universitario</p>
+            <p>UACH - Facultad de Contaduría y Administración | Creado por Omar Torres Escorza</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function showSection(id, btn) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            // Mostrar la elegida
+            document.getElementById(id).classList.add('active');
+            
+            // Estilo del botón activo
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Scroll al inicio de la página
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
